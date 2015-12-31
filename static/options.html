@@ -3,7 +3,26 @@
 <title>Missionary Options</title>
 </head>
 <body>
-<div id="body"></div>
-</body>
+<div id="body">
+  pomodoro: <input type="number" id="pomodoro-min"/> min.<br/>
+  short break: <input type="number" id="short-break-min"/> min.<br/>
+  long break: <input type="number" id="long-break-min"/> min.<br/>
+  long break every <input type="number" id="long-break-every"/> pomodoros</br>
+  notification type:
+  <select id="notification-type">
+    <option value="1">none</option>
+    <option value="2">Chrome Notification (disappear automatically)</option>
+    <option value="3">Chrome Notification (NOT disappear automatically)</option>
+    <option value="4">Alert (Chrome will gain focus even if you are using another app)</option>
+  </select><br/>
+  go to next pomodoro:
+  <select id="go-to-next-pomodoro">
+    <option value="1">without user interaction</option>
+    <option value="2">after closing notification</option>
+    <option value="3">after clicking extension icon</option>
+  </select><br/>
+  <button id="save">save</button>
+</div>
 <script src="options-bundle.js"></script>
+</body>
 </html>
