@@ -28,6 +28,9 @@ export default class Pomodoro {
     this.intervalID = setInterval(this._tick.bind(this), 1000);
   }
   _updateBadge() {
+    const color = this.stage === C.Stage.Pomodoro ? '#ff0000' : '#00cc00';
+    chrome.browserAction.setBadgeBackgroundColor({ color });
+
     if (this.second > 60) {
       const min = Math.floor(this.second / 60);
       chrome.browserAction.setBadgeText({ text: min + 'm' });
