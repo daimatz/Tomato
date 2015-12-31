@@ -5,7 +5,8 @@
   "version": "0.1",
   "permissions": [
     "contextMenus",
-    "notifications"
+    "notifications",
+    "tabs"
   ],
   "background": {
     "scripts": ["background-bundle.js"]
@@ -14,7 +15,7 @@
     "default_icon": "icon128.png"
   },
   "icons": {
-    "128": "icon128.png",
+    "128": "icon128.png"
   },
   "web_accessible_resources": [
     "icon128.png"
