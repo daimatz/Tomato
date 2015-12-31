@@ -1,15 +1,17 @@
+import C from './constant';
+
 const defaultConfig = {
   pomodoroMin: 25,
   shortBreakMin: 5,
   longBreakMin: 15,
   longBreakEvery: 4,
-  notificationType: 2,
-  goToNextPomodoro: 2
+  notificationType: C.NotificationType.NotificationDissappear,
+  goToNextPomodoro: C.GoToNextPomodoro.AfterClosingNotification
 };
 
 export default class ConfigProxy {
-  constructor(localStorageKey) {
-    this.localStorageKey = localStorageKey;
+  constructor() {
+    this.localStorageKey = 'config';
   }
   load() {
     const json = localStorage[this.localStorageKey];

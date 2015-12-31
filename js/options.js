@@ -37,6 +37,5 @@ class Options {
   }
 }
 
-
-const configProxy = new ConfigProxy('config');
+const configProxy = new ConfigProxy();
 window.onload = new Options(document, configProxy).main();
