@@ -1,22 +1,18 @@
-const defaultConfig = {
-  pomodoroMin: 25,
-  shortBreakMin: 5,
-  longBreakMin: 15,
-  longBreakEvery: 4,
-  notificationType: 2,
-  goToNextPomodoro: 2
-};
+import ConfigProxy from './config_proxy';
 
 class Options {
-  constructor(document) {
+  constructor(document, configProxy) {
     this.document = document;
+    this.configProxy = configProxy;
   }
 
   element(id) {
     return this.document.getElementById(id);
   };
 
-  draw(config) {
+  draw() {
+    const config = this.configProxy.load();
+
     this.element('pomodoro-min').value = config.pomodoroMin;
     this.element('short-break-min').value = config.shortBreakMin;
     this.element('long-break-min').value = config.longBreakMin;
@@ -33,14 +29,14 @@ class Options {
         notificationType:    this.element('notification-type').value,
         goToNextPomodoro:    this.element('go-to-next-pomodoro').value
       };
-      localStorage['config'] = JSON.stringify(newConfig);
+      this.configProxy.save(newConfig);
     };
   }
   main() {
-    const json = localStorage['config'];
-    const config = !!json ? JSON.parse(json) : defaultConfig;
-    this.draw(config);
+    this.draw();
   }
 }
 
-window.onload = new Options(document).main();
+
+const configProxy = new ConfigProxy('config');
+window.onload = new Options(document, configProxy).main();
