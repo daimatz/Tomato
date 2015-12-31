@@ -8,11 +8,15 @@ const defaultConfig = {
 };
 
 class Options {
+  constructor(document) {
+    this.document = document;
+  }
+
   element(id) {
-    return document.getElementById(id);
+    return this.document.getElementById(id);
   };
 
-  draw(document, config) {
+  draw(config) {
     this.element('pomodoro-min').value = config.pomodoroMin;
     this.element('short-break-min').value = config.shortBreakMin;
     this.element('long-break-min').value = config.longBreakMin;
@@ -32,11 +36,11 @@ class Options {
       localStorage['config'] = JSON.stringify(newConfig);
     };
   }
-  main(document) {
+  main() {
     const json = localStorage['config'];
     const config = !!json ? JSON.parse(json) : defaultConfig;
-    this.draw(document, config);
+    this.draw(config);
   }
 }
 
-window.onload = new Options().main(document);
+window.onload = new Options(document).main();
