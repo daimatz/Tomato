@@ -1,0 +1,27 @@
+{
+  "name": "tomato",
+  "version": "0.1.0",
+  "description": "Customizable Pomodoro Timer for Chrome",
+  "main": "main.js",
+  "scripts": {
+    "build": "gulp build",
+    "clean": "gulp clean"
+  },
+  "devDependencies": {
+      "babelify": "6.3.0",
+      "browserify": "11.2.0",
+      "del": "2.0.2",
+      "gulp": "3.9.0",
+      "vinyl-source-stream": "1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/daimatz/Tomato.git"
+  },
+  "author": "daimatz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daimatz/Tomato/issues"
+  },
+  "homepage": "https://github.com/daimatz/Tomato#readme"
+}
