@@ -20,8 +20,19 @@ class Background {
       this.pomodoro.start();
     }
   }
+  reset(info, tab) {
+    if (!!this.pomodoro) {
+      this.pomodoro.reset();
+      this.pomodoro = undefined;
+    }
+  }
   main() {
     chrome.browserAction.onClicked.addListener(this.onclick.bind(this));
+    chrome.contextMenus.create({
+      "title": "Reset",
+      "contexts": ["browser_action"],
+      "onclick" : this.reset.bind(this)
+    });
   }
 }
 
