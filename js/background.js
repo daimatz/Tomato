@@ -9,8 +9,11 @@ class Background {
   }
   onclick(tab) {
     if (!!this.pomodoro) {
-      this.pomodoro.stop();
-      this.pomodoro = undefined;
+      if (this.pomodoro.isRunning()) {
+        this.pomodoro.pause();
+      } else {
+        this.pomodoro.resume();
+      }
     } else {
       const config = configProxy.load();
       this.pomodoro = new Pomodoro(config);

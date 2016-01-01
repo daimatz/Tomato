@@ -8,13 +8,30 @@ export default class Pomodoro {
     this.second = undefined;
     this.intervalID = undefined;
   }
+  isRunning() {
+    return !!this.intervalID;
+  }
   start() {
     this._start(C.Stage.Pomodoro, this.config.pomodoroMin);
   }
-  stop() {
+  pause() {
     if (!!this.intervalID) {
       clearInterval(this.intervalID);
     }
+    this.intervalID = undefined;
+  }
+  resume() {
+    if (!this.intervalID) {
+      this.intervalID = setInterval(this._tick.bind(this), 1000);
+    }
+  }
+  reset() {
+    if (!!this.intervalID) {
+      clearInterval(this.intervalID);
+    }
+    this.nPomodoro = 1;
+    this.stage = undefined;
+    this.intervalID = undefined;
     this.second = undefined;
     this._updateBadge();
   }
@@ -61,8 +78,8 @@ export default class Pomodoro {
       }
     } else if (this.stage === C.Stage.ShortBreak
       || this.stage === C.Stage.LongBreak) {
-      this._start(C.Stage.Pomodoro, this.config.pomodoroMin);
       this._postNotification("starting pomodoro: " + this.nPomodoro + "...");
+      this._start(C.Stage.Pomodoro, this.config.pomodoroMin);
     }
   }
   _postNotification(message) {

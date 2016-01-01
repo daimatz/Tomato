@@ -15,7 +15,16 @@ export default class ConfigProxy {
   }
   load() {
     const json = localStorage[this.localStorageKey];
-    const config = !!json ? JSON.parse(json) : defaultConfig;
+    const config = {};
+    for (var key in defaultConfig) {
+      config[key] = defaultConfig[key];
+    }
+    const loaded = JSON.parse(json);
+    for (var key in defaultConfig) {
+      if (typeof loaded[key] === typeof defaultConfig[key]) {
+        config[key] = loaded[key];
+      }
+    }
     return config;
   }
   save(config) {

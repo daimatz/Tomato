@@ -22,12 +22,12 @@ class Options {
 
     this.element('save').onclick = () => {
       const newConfig = {
-        pomodoroMin:         this.element('pomodoro-min').value,
-        shortBreakMin:       this.element('short-break-min').value,
-        longBreakMin:        this.element('long-break-min').value,
-        longBreakEvery:      this.element('long-break-every').value,
-        notificationType:    this.element('notification-type').value,
-        goToNextPomodoro:    this.element('go-to-next-pomodoro').value
+        pomodoroMin:      parseInt(this.element('pomodoro-min').value),
+        shortBreakMin:    parseInt(this.element('short-break-min').value),
+        longBreakMin:     parseInt(this.element('long-break-min').value),
+        longBreakEvery:   parseInt(this.element('long-break-every').value),
+        notificationType: parseInt(this.element('notification-type').value),
+        goToNextPomodoro: parseInt(this.element('go-to-next-pomodoro').value)
       };
       this.configProxy.save(newConfig);
     };
