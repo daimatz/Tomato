@@ -1,4 +1,4 @@
-import ConfigProxy from './config_proxy';
+import ConfigAccessor from './config_accessor';
 
 class Options {
   constructor(document, configProxy) {
@@ -37,5 +37,5 @@ class Options {
   }
 }
 
-const configProxy = new ConfigProxy();
+const configProxy = new ConfigAccessor();
 window.onload = new Options(document, configProxy).main();

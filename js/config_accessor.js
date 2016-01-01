@@ -9,7 +9,7 @@ const defaultConfig = {
   goToNextPomodoro: C.GoToNextPomodoro.AfterClosingNotification
 };
 
-export default class ConfigProxy {
+export default class ConfigAccessor {
   constructor() {
     this.localStorageKey = 'config';
   }

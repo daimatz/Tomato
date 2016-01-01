@@ -1,4 +1,4 @@
-import ConfigProxy from './config_proxy';
+import ConfigAccessor from './config_accessor';
 import Pomodoro from './pomodoro';
 import C from './constant';
 
@@ -36,5 +36,5 @@ class Background {
   }
 }
 
-const configProxy = new ConfigProxy();
+const configProxy = new ConfigAccessor();
 new Background(configProxy).main();
